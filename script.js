@@ -1,7 +1,6 @@
 document.getElementById('points-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  // Get form data
   const name = document.getElementById('name').value;
   const date = document.getElementById('date').value;
   const mainEventPoints = document.getElementById('main-event').value;
@@ -9,16 +8,24 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   const dailyGamePoints = document.getElementById('daily-game').value;
   const radioPoints = document.getElementById('radio').value;
 
-  // Calculate total points
-  const totalPoints = parseInt(mainEventPoints) + parseInt(weeklyMissionPoints) +
-                      parseInt(dailyGamePoints) + parseInt(radioPoints);
+  // Check if the date is in 2025
+  const selectedDate = new Date(date);
+  if (selectedDate.getFullYear() !== 2025) {
+    alert("Please select a date in 2025.");
+    return;
+  }
+
+  // Calculate total points (optional fields can be blank)
+  const totalPoints = (parseInt(mainEventPoints) || 0) + 
+                      (parseInt(weeklyMissionPoints) || 0) + 
+                      (parseInt(dailyGamePoints) || 0) + 
+                      (parseInt(radioPoints) || 0);
 
   const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
 
   // Display a success message
   document.getElementById('form-response').textContent = responseMessage;
 
-  // Create data to send to Google Sheets
   const data = {
     'name': name,
     'date': date,
@@ -28,7 +35,6 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     'radio': radioPoints
   };
 
-  // Send the form data to Google Apps Script web app (replace with your URL)
   fetch('https://script.google.com/macros/s/AKfycby-PogK6c0oHH9t0iX2OmRWFF5PCQ3waiThdKCJTMs9BMWnlmQTblrFTIk7eSXlPDyr/exec', {
     method: 'POST',
     body: new URLSearchParams(data)
