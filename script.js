@@ -4,10 +4,10 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   // Get form data
   const name = document.getElementById('name').value;
   const date = document.getElementById('date').value;
-  const mainEventPoints = document.getElementById('main-event').value;
-  const weeklyMissionPoints = document.getElementById('weekly-mission').value;
-  const dailyGamePoints = document.getElementById('daily-game').value;
-  const radioPoints = document.getElementById('radio').value;
+  const mainEventPoints = document.getElementById('main-event-points').value;
+  const weeklyMissionPoints = document.getElementById('weekly-mission-points').value;
+  const dailyGamePoints = document.getElementById('daily-game-points').value;
+  const radioPoints = document.getElementById('radio-points').value;
 
   // Calculate total points
   const totalPoints = parseInt(mainEventPoints) + parseInt(weeklyMissionPoints) +
