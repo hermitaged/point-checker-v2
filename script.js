@@ -18,7 +18,7 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   // Display a success message
   document.getElementById('form-response').textContent = responseMessage;
 
-  // Data to send to Google Sheets via the Google Apps Script Web App
+  // Create data to send to Google Sheets
   const data = {
     'name': name,
     'date': date,
@@ -28,8 +28,8 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     'radio': radioPoints
   };
 
-  // Replace with your correct Web App URL
-  fetch('https://script.google.com/macros/s/AKfycbwLXvpItL8C5pEljBLV_VbwRUBEn5mT9hth2ZDsE9G7KRqXUodC7K4zRNHt2DHFr0I/exec', {
+  // Send the form data to Google Apps Script web app (replace with your URL)
+  fetch('https://script.google.com/macros/s/AKfycby-PogK6c0oHH9t0iX2OmRWFF5PCQ3waiThdKCJTMs9BMWnlmQTblrFTIk7eSXlPDyr/exec', {
     method: 'POST',
     body: new URLSearchParams(data)
   })
