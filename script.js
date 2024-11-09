@@ -35,7 +35,7 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     'radio': radioPoints
   };
 
-  fetch('https://script.google.com/macros/s/AKfycby-PogK6c0oHH9t0iX2OmRWFF5PCQ3waiThdKCJTMs9BMWnlmQTblrFTIk7eSXlPDyr/exec', {
+  fetch('https://script.google.com/macros/s/AKfycby8kYnewtN4_TTv41uJO2QUMvzZcz-t1GoWFtiVw2RmguF8l3OI4UHb1MMaIWBj4bU1/exec', {
     method: 'POST',
     body: new URLSearchParams(data)
   })
