@@ -4,10 +4,10 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   // Get form data
   const name = document.getElementById('name').value;
   const date = document.getElementById('date').value;
-  const mainEventPoints = document.getElementById('main-event-points').value;
-  const weeklyMissionPoints = document.getElementById('weekly-mission-points').value;
-  const dailyGamePoints = document.getElementById('daily-game-points').value;
-  const radioPoints = document.getElementById('radio-points').value;
+  const mainEventPoints = document.getElementById('main-event').value;
+  const weeklyMissionPoints = document.getElementById('weekly-mission').value;
+  const dailyGamePoints = document.getElementById('daily-game').value;
+  const radioPoints = document.getElementById('radio').value;
 
   // Calculate total points
   const totalPoints = parseInt(mainEventPoints) + parseInt(weeklyMissionPoints) +
@@ -28,8 +28,8 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     'radio': radioPoints
   };
 
-  // Make sure you replace 'YOUR_WEB_APP_URL_HERE' with the URL you got from the Apps Script deployment
-  fetch('https://script.google.com/macros/s/AKfycbyUp7r1zQSnRDTErCXH_M_cMxCDocnfC3mTwq4_mjO2vloPOQ54WDNS3wFQW_WUovlf/exec', {
+  // Replace with your correct Web App URL
+  fetch('https://script.google.com/macros/s/AKfycbwLXvpItL8C5pEljBLV_VbwRUBEn5mT9hth2ZDsE9G7KRqXUodC7K4zRNHt2DHFr0I/exec', {
     method: 'POST',
     body: new URLSearchParams(data)
   })
