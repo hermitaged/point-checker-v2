@@ -5,63 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Points Form</title>
 
-  <!-- Add CSS styles inside the <style> tag -->
+  <!-- Add enhanced CSS styles inside the <style> tag -->
   <style>
     /* General Body Style */
     body {
-      font-family: Arial, sans-serif;
-      background-image: url('your-background-image.jpg');
-      background-size: cover;
-      background-position: center;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient Background */
       color: white;
       margin: 0;
       padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Container for the Form */
+    /* Form Container */
     #form-container {
-      max-width: 600px;
-      margin: 50px auto;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
     }
 
-    /* Form Elements */
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #f0f0f0;
+    }
+
+    /* Form Elements Styling */
     input[type="text"],
     input[type="date"],
     input[type="number"],
     textarea {
       width: 100%;
-      padding: 10px;
+      padding: 15px;
       margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      border-radius: 8px;
+      border: 2px solid #ddd;
       font-size: 16px;
+      background-color: #f1f1f1;
     }
 
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="number"]:focus {
+      border-color: #ff7e5f;
+      outline: none;
+    }
+
+    /* Submit Button */
     button {
-      padding: 10px 20px;
-      background-color: #1da1f2;
+      padding: 12px 25px;
+      background-color: #ff7e5f;
       border: none;
-      border-radius: 5px;
-      font-size: 16px;
+      border-radius: 8px;
+      font-size: 18px;
       color: white;
+      width: 100%;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     button:hover {
-      background-color: #0084b4;
+      background-color: #feb47b;
     }
 
-    /* Message Area */
+    /* Response Message Area */
     #form-response {
       margin-top: 20px;
       font-weight: bold;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    /* Small Screen Responsiveness */
+    @media screen and (max-width: 600px) {
+      #form-container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      input[type="number"],
+      textarea {
+        font-size: 14px;
+      }
+
+      button {
+        font-size: 16px;
+      }
     }
   </style>
-
 </head>
 <body>
 
@@ -118,4 +161,32 @@
       // Calculate total points (optional fields can be blank)
       const totalPoints = (parseInt(mainEventPoints) || 0) + 
                           (parseInt(weeklyMissionPoints) || 0) + 
-                          (parseInt(dailyGamePoints) || 0
+                          (parseInt(dailyGamePoints) || 0) + 
+                          (parseInt(radioPoints) || 0);
+
+      const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
+
+      // Display a success message
+      document.getElementById('form-response').textContent = responseMessage;
+
+      const data = {
+        'name': name,
+        'date': date,
+        'mainEvent': mainEventPoints,
+        'weeklyMission': weeklyMissionPoints,
+        'dailyGame': dailyGamePoints,
+        'radio': radioPoints
+      };
+
+      fetch('YOUR_WEB_APP_URL_HERE', {
+        method: 'POST',
+        body: new URLSearchParams(data)
+      })
+      .then(response => response.text())
+      .then(result => console.log('Success:', result))
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
+
+</body>
+</html>
