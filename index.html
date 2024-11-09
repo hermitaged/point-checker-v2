@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roleplay Points Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Roleplay Points Tracker</h1>
+  <form id="points-form">
+    <label for="name">Member Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="main-event">Main Event Points:</label>
+    <input type="number" id="main-event" name="main-event" required>
+
+    <label for="weekly-mission">Weekly Mission Points:</label>
+    <input type="number" id="weekly-mission" name="weekly-mission" required>
+
+    <label for="daily-game">Daily Game Points:</label>
+    <input type="number" id="daily-game" name="daily-game" required>
+
+    <label for="radio">Radio Points:</label>
+    <input type="number" id="radio" name="radio" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="form-response"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
