@@ -3,190 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Points Form</title>
-
-  <!-- Add enhanced CSS styles inside the <style> tag -->
-  <style>
-    /* General Body Style */
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient Background */
-      color: white;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Form Container */
-    #form-container {
-      background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
-      border-radius: 10px;
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
-      padding: 40px;
-      width: 100%;
-      max-width: 600px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #f0f0f0;
-    }
-
-    /* Form Elements Styling */
-    input[type="text"],
-    input[type="date"],
-    input[type="number"],
-    textarea {
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 2px solid #ddd;
-      font-size: 16px;
-      background-color: #f1f1f1;
-    }
-
-    input[type="text"]:focus,
-    input[type="date"]:focus,
-    input[type="number"]:focus {
-      border-color: #ff7e5f;
-      outline: none;
-    }
-
-    /* Submit Button */
-    button {
-      padding: 12px 25px;
-      background-color: #ff7e5f;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      color: white;
-      width: 100%;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #feb47b;
-    }
-
-    /* Response Message Area */
-    #form-response {
-      margin-top: 20px;
-      font-weight: bold;
-      text-align: center;
-      font-size: 18px;
-    }
-
-    /* Small Screen Responsiveness */
-    @media screen and (max-width: 600px) {
-      #form-container {
-        padding: 20px;
-      }
-
-      h2 {
-        font-size: 20px;
-      }
-
-      input[type="text"],
-      input[type="date"],
-      input[type="number"],
-      textarea {
-        font-size: 14px;
-      }
-
-      button {
-        font-size: 16px;
-      }
-    }
-  </style>
+  <title>Roleplay Points Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>Roleplay Points Tracker</h1>
+  <form id="points-form">
+    <label for="name">Member Name:</label>
+    <input type="text" id="name" name="name" required>
 
-  <div id="form-container">
-    <h2>Submit Your Points</h2>
-    <form id="points-form">
-      <!-- Name Field -->
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-      
-      <!-- Date Field -->
-      <label for="date">Date:</label>
-      <input type="date" id="date" name="date" required>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
 
-      <!-- Points Fields -->
-      <label for="main-event">Main Event Points:</label>
-      <input type="number" id="main-event" name="main-event" min="0">
-      
-      <label for="weekly-mission">Weekly Mission Points:</label>
-      <input type="number" id="weekly-mission" name="weekly-mission" min="0">
+    <label for="main-event">Main Event Points:</label>
+    <input type="number" id="main-event" name="main-event" required>
 
-      <label for="daily-game">Daily Game Points:</label>
-      <input type="number" id="daily-game" name="daily-game" min="0">
+    <label for="weekly-mission">Weekly Mission Points:</label>
+    <input type="number" id="weekly-mission" name="weekly-mission" required>
 
-      <label for="radio">Radio Points:</label>
-      <input type="number" id="radio" name="radio" min="0">
+    <label for="daily-game">Daily Game Points:</label>
+    <input type="number" id="daily-game" name="daily-game" required>
 
-      <!-- Submit Button -->
-      <button type="submit">Submit</button>
-    </form>
+    <label for="radio">Radio Points:</label>
+    <input type="number" id="radio" name="radio" required>
 
-    <!-- Response Message -->
-    <div id="form-response"></div>
-  </div>
+    <button type="submit">Submit</button>
+  </form>
 
-  <script>
-    document.getElementById('points-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+  <div id="form-response"></div>
 
-      const name = document.getElementById('name').value;
-      const date = document.getElementById('date').value;
-      const mainEventPoints = document.getElementById('main-event').value;
-      const weeklyMissionPoints = document.getElementById('weekly-mission').value;
-      const dailyGamePoints = document.getElementById('daily-game').value;
-      const radioPoints = document.getElementById('radio').value;
-
-      // Check if the date is in 2025
-      const selectedDate = new Date(date);
-      if (selectedDate.getFullYear() !== 2025) {
-        alert("Please select a date in 2025.");
-        return;
-      }
-
-      // Calculate total points (optional fields can be blank)
-      const totalPoints = (parseInt(mainEventPoints) || 0) + 
-                          (parseInt(weeklyMissionPoints) || 0) + 
-                          (parseInt(dailyGamePoints) || 0) + 
-                          (parseInt(radioPoints) || 0);
-
-      const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
-
-      // Display a success message
-      document.getElementById('form-response').textContent = responseMessage;
-
-      const data = {
-        'name': name,
-        'date': date,
-        'mainEvent': mainEventPoints,
-        'weeklyMission': weeklyMissionPoints,
-        'dailyGame': dailyGamePoints,
-        'radio': radioPoints
-      };
-
-      fetch('YOUR_WEB_APP_URL_HERE', {
-        method: 'POST',
-        body: new URLSearchParams(data)
-      })
-      .then(response => response.text())
-      .then(result => console.log('Success:', result))
-      .catch(error => console.error('Error:', error));
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
