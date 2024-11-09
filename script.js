@@ -29,7 +29,7 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   };
 
   // Make sure you replace 'YOUR_WEB_APP_URL_HERE' with the URL you got from the Apps Script deployment
-  fetch('https://script.google.com/macros/s/AKfycby-PogK6c0oHH9t0iX2OmRWFF5PCQ3waiThdKCJTMs9BMWnlmQTblrFTIk7eSXlPDyr/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbwhu3q_RDN-TSoSFbX3tkKGKKniHvKsjgAtYYj0taZq_w5aP8wsna_3fiCuEMywzuVA/exec', {
     method: 'POST',
     body: new URLSearchParams(data)
   })
