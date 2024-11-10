@@ -33,7 +33,7 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   };
 
   // Send form data to Google Apps Script Web App
-  fetch('https://script.google.com/macros/s/AKfycbz7TrN9PBO2c62nAtBMpdPAg25V2b9cqcMc20CiOUtY8wWolrx3iLInSx8-IvHsr0_B/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbzPcNthP9TkYTAd8z0n-YQQfPIcdVDHa49VkMNBd76Etcr618JRCTk-NyoKBmHY4TvA/exec', {
     method: 'POST',
     body: new URLSearchParams(data)
   })
