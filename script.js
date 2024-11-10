@@ -29,7 +29,8 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     'mainEvent': mainEventPoints,
     'weeklyMission': weeklyMissionPoints,
     'dailyGame': dailyGamePoints,
-    'radio': radioPoints
+    'radio': radioPoints,
+    'totalPoints': totalPoints // Include totalPoints in data sent to server
   };
 
   // Send form data to Google Apps Script Web App
@@ -46,7 +47,6 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   })
   .catch(error => {
     console.error('Error:', error);
-    // Display persistent failure message
     document.getElementById('form-response').textContent = "Submission failed. Please try again.";
   });
 });
