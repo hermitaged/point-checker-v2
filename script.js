@@ -45,8 +45,13 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     document.getElementById('form-response').textContent = responseMessage;
     console.log('Success:', result);
 
-    // Clear form fields after successful submission
-    document.getElementById('points-form').reset(); // Clears all fields
+    // Clear each form field explicitly
+    document.getElementById('name').value = "";
+    document.getElementById('date').value = "";
+    document.getElementById('main-event').value = "";
+    document.getElementById('weekly-mission').value = "";
+    document.getElementById('daily-game').value = "";
+    document.getElementById('radio').value = "";
 
   })
   .catch(error => {
