@@ -13,32 +13,47 @@
 </head>
 <body>
 
-    <h2>Manifest Your Memora</h2>
-    <article id="description">
-        <p>Place your Memora from Chainfall, Chronoflux, Nebulight, and Voxara here. If you encounter any difficulties, please reach out to @username.</p>
-    </article>
+    <div class="pagewrap">
+        <form class="form" id="points-form">
+            <h2 class="form__title">Manifest Your Memora</h2>
+            <article id="description">
+                <p>Place your Memora from Chainfall, Chronoflux, Nebulight, and Voxara here.</p>
+                <p></p>If you encounter any difficulties, please reach out to @username.</p>
+            </article>
 
-    <form id="points-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+            <div class="container">
+                <input class="container__input" type="text" id="name" name="name" required>
+                <label for="name" class="container__label">Name</label>
+            </div>
+            
+            <div class="container">
+                <input class="container__input" type="date" id="date" name="date" required>
+                <label for="date" class="container__label">Date</label>
+            </div>
 
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required>
+            <div class="container">
+                <input class="container__input" type="number" id="main-event" name="mainEvent" min="0">
+                <label for="main-event" class="container__label">Chainfall</label>
+            </div>
 
-        <label for="main-event">Chainfall:</label>
-        <input type="number" id="main-event" name="mainEvent" min="0">
+            <div class="container">
+                <input class="container__input" type="number" id="weekly-mission" name="weeklyMission" min="0">
+                <label for="weekly-mission" class="container__label">Chronoflux</label>
+            </div>
 
-        <label for="weekly-mission">Chronoflux:</label>
-        <input type="number" id="weekly-mission" name="weeklyMission" min="0">
+            <div class="container">
+                <input class="container__input" type="number" id="daily-game" name="dailyGame" min="0">
+                <label for="daily-game" class="container__label">Nebulight</label>
+            </div>
 
-        <label for="daily-game">Nebulight:</label>
-        <input type="number" id="daily-game" name="dailyGame" min="0">
+            <div class="container">
+                <input class="container__input" type="number" id="radio" name="radio" min="0">
+                <label for="radio" class="container__label">Voxara</label>
+            </div>
 
-        <label for="radio">Voxara:</label>
-        <input type="number" id="radio" name="radio" min="0">
-
-        <button type="submit">Send</button>
-    </form>
+            <button class="form__submit" type="submit">Submit</button>
+        </form>
+    </div>
 
     <div id="form-response"></div>
 
