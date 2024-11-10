@@ -19,12 +19,16 @@ h2 {
 
 /* Description */
 #description {
-    text-align: center;
+    text-align: center; /* Ensure the text is centered */
     margin-bottom: 2rem;
     line-height: 1.6;
     letter-spacing: .03rem;
     font-size: .95rem;
     color: #555; /* Softer color for description */
+    width: 95vw; /* Ensure it doesn't stretch too wide */
+    max-width: 35rem; /* Maximum width */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
 }
 
 /* Form Container */
