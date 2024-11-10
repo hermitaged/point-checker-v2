@@ -1,116 +1,130 @@
-/* Reset basic styling */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-}
-
-/* Body and background */
+/* General reset and styling */
+body, figure { margin: 0; padding: 0; }
+html { font-size: 14px; }
 body {
-  background: #f8f8f8; /* Lighter gray for a soft feel */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 0 15px;
-  color: #333; /* Default text color */
+    font: 1rem 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #f9f9f9; /* Light background for the form */
+    padding-top: 7rem; /* Adjust for header space */
 }
 
-/* Form container */
-#form-container {
-  background-color: #fff;
-  padding: 30px;
-  max-width: 600px; /* Slightly wider form for better spacing */
-  width: 100%;
-  border-radius: 12px; /* Softer corners */
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Stronger shadow for depth */
-  text-align: center;
-  box-sizing: border-box;
-  border: 1px solid #e5e5e5; /* Subtle border around the form */
-  margin: 20px;
+/* Header */
+header {
+    text-align: center;
+    margin: 0 auto 5rem;
+    width: 95vw;
+    max-width: 35rem;
 }
 
-/* Form title */
-#form-container h2 {
-  color: #333;
-  font-size: 28px; /* Larger title for emphasis */
-  margin-bottom: 20px;
-  letter-spacing: 1px; /* Slight letter spacing for clean appearance */
+figure.header-image {
+    width: 5rem;
+    height: 5rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 2rem;
 }
 
-/* Form labels and inputs */
+img.header-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+h1#title {
+    font: 500 1.2rem 'Montserrat', sans-serif;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#description {
+    margin: 3rem 0;
+    line-height: 170%;
+    letter-spacing: .03rem;
+    font-size: .9rem;
+}
+
+/* Form Container */
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Adjust form fields to not stretch too wide */
+form {
+    width: 95vw; /* Responsive width */
+    max-width: 35rem; /* Maximum width */
+    margin: 0 auto;
+    font-size: .95rem; /* Font size adjustment */
+}
+
+/* Form elements styling */
 label {
-  display: block;
-  color: #666;
-  font-size: 14px; /* Slightly smaller label font size */
-  margin-bottom: 8px;
-  text-align: left;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 input[type="text"],
 input[type="date"],
 input[type="number"] {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 20px;
-  border: 2px solid #ddd; /* More noticeable border */
-  border-radius: 8px; /* Slightly larger rounded corners */
-  font-size: 16px;
-  transition: all 0.3s ease;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    box-sizing: border-box; /* To include padding and border in width */
+    transition: all 0.3s ease;
 }
 
 input[type="text"]:focus,
 input[type="date"]:focus,
 input[type="number"]:focus {
-  border-color: #4CAF50; /* Focus color matches button */
-  outline: none; /* Removes outline when focused */
+    border-color: #00b8d4; /* Focus color */
+    outline: none;
 }
 
-/* Button */
 button {
-  width: 100%;
-  padding: 14px 0;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    padding: 1.2rem;
+    background-color: #00b8d4; /* Cyan color like Tumblr */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #45a049;
-  transform: scale(1.05); /* Slight scaling effect on hover */
+    background-color: #008c9e; /* Darker hover state */
 }
 
 button:active {
-  background-color: #399739;
-  transform: scale(1); /* Return to normal size when clicked */
+    background-color: #007b8a; /* Even darker on click */
 }
 
-/* Response message */
-#form-response {
-  margin-top: 15px;
-  font-size: 18px;
-  color: #4CAF50;
+/* Footer */
+footer {
+    font-size: 0.9rem;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #888;
 }
 
-/* Error message styling */
-#form-response.error {
-  color: #FF0000;
+footer a {
+    text-decoration: none;
+    color: #888;
 }
 
-/* Media query for responsiveness */
-@media (max-width: 768px) {
-  #form-container {
-    padding: 20px;
-    max-width: 90%;
-  }
-
-  button {
-    font-size: 16px;
-    padding: 12px 0;
-  }
+footer a:hover {
+    color: #00b8d4; /* Highlight on hover */
 }
