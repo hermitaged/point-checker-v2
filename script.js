@@ -22,47 +22,34 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
                       (parseInt(dailyGamePoints) || 0) + 
                       (parseInt(radioPoints) || 0);
 
-  // Create data object to send
-  const data = {
-    'name': name,
-    'date': date,
-    'mainEvent': mainEventPoints,
-    'weeklyMission': weeklyMissionPoints,
-    'dailyGame': dailyGamePoints,
-    'radio': radioPoints,
-    'totalPoints': totalPoints // Include totalPoints in data sent to server
-  };
+  // Display the thank-you message immediately
+  const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
+  const formResponseElement = document.getElementById('form-response');
+  formResponseElement.textContent = responseMessage;
+  formResponseElement.style.display = 'block';  // Make the message visible
 
-  console.log(data);  // Log the data to verify it's correct
+  // Log the message to verify it's shown correctly
+  console.log('Form submitted:', responseMessage);
 
   // Send form data to Google Apps Script Web App
   fetch('https://script.google.com/macros/s/AKfycbx4TZuTtqImHRCMp1r1MfMi-xO-wgIo_AVKREhmw5Bg5D4WLGla7mzQuDtD_238Zean/exec', {
     method: 'POST',
-    body: new URLSearchParams(data),
+    body: new URLSearchParams({
+      'name': name,
+      'date': date,
+      'mainEvent': mainEventPoints,
+      'weeklyMission': weeklyMissionPoints,
+      'dailyGame': dailyGamePoints,
+      'radio': radioPoints,
+      'totalPoints': totalPoints
+    }),
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
   })
   .then(response => response.text())
   .then(result => {
-    console.log(result);  // Log the result from the Google Apps Script
-    const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
-
-    // Display the thank-you message as an alert-style box
-    const formResponseElement = document.getElementById('form-response');
-    formResponseElement.textContent = responseMessage;
-
-    // Show the alert-style response container
-    formResponseElement.style.display = 'block';  // Make the container visible
-
-    // Clear each form field explicitly
-    document.getElementById('name').value = "";
-    document.getElementById('date').value = "";
-    document.getElementById('main-event').value = "";
-    document.getElementById('weekly-mission').value = "";
-    document.getElementById('daily-game').value = "";
-    document.getElementById('radio').value = "";
-
+    console.log('Result from Google Apps Script:', result);  // Log the result from the Google Apps Script
   })
   .catch(error => {
     console.error('Error:', error);
@@ -70,4 +57,12 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     formResponseElement.textContent = "Submission failed. Please try again.";
     formResponseElement.style.display = 'block'; // Display error message
   });
+
+  // Clear form fields after submission
+  document.getElementById('name').value = "";
+  document.getElementById('date').value = "";
+  document.getElementById('main-event').value = "";
+  document.getElementById('weekly-mission').value = "";
+  document.getElementById('daily-game').value = "";
+  document.getElementById('radio').value = "";
 });
