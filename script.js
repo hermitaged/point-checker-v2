@@ -22,14 +22,8 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
                       (parseInt(dailyGamePoints) || 0) + 
                       (parseInt(radioPoints) || 0);
 
-  // Display the thank-you message immediately
-  const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
-  const formResponseElement = document.getElementById('form-response');
-  formResponseElement.textContent = responseMessage;
-  formResponseElement.style.display = 'block';  // Make the message visible
-
-  // Log the message to verify it's shown correctly
-  console.log('Form submitted:', responseMessage);
+  // Show thank-you alert after submission
+  alert(`Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`);
 
   // Send form data to Google Apps Script Web App
   fetch('https://script.google.com/macros/s/AKfycbx4TZuTtqImHRCMp1r1MfMi-xO-wgIo_AVKREhmw5Bg5D4WLGla7mzQuDtD_238Zean/exec', {
@@ -53,9 +47,7 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   })
   .catch(error => {
     console.error('Error:', error);
-    const formResponseElement = document.getElementById('form-response');
-    formResponseElement.textContent = "Submission failed. Please try again.";
-    formResponseElement.style.display = 'block'; // Display error message
+    alert("Submission failed. Please try again.");
   });
 
   // Clear form fields after submission
