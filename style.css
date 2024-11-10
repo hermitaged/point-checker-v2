@@ -90,23 +90,3 @@ button:hover {
 button:active {
     background-color: #007b8a; /* Even darker on click */
 }
-
-/* New styles for the thank-you message */
-#form-response {
-    display: none; /* Hidden by default */
-    font-size: 1.1rem;
-    color: #fff; /* White text */
-    background-color: #ff9800; /* Orange background, similar to a warning color */
-    padding: 1rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-    text-align: center;
-    width: 100%; /* Take full width of the container */
-    max-width: 35rem; /* Maximum width to prevent it stretching too much */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for emphasis */
-}
-
