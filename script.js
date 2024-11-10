@@ -1,14 +1,15 @@
 document.getElementById('points-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
+  // Form field values
   const name = document.getElementById('name').value;
   const date = document.getElementById('date').value;
-  const mainEventPoints = document.getElementById('main-event').value;
-  const weeklyMissionPoints = document.getElementById('weekly-mission').value;
-  const dailyGamePoints = document.getElementById('daily-game').value;
-  const radioPoints = document.getElementById('radio').value;
+  const mainEventPoints = document.getElementById('main-event').value || 0;
+  const weeklyMissionPoints = document.getElementById('weekly-mission').value || 0;
+  const dailyGamePoints = document.getElementById('daily-game').value || 0;
+  const radioPoints = document.getElementById('radio').value || 0;
 
-  // Check if the date is in 2025
+  // Date validation to ensure it is in 2025
   const selectedDate = new Date(date);
   if (selectedDate.getFullYear() !== 2025) {
     alert("Please select a date in 2025.");
@@ -21,11 +22,7 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
                       (parseInt(dailyGamePoints) || 0) + 
                       (parseInt(radioPoints) || 0);
 
-  const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
-
-  // Display a success message
-  document.getElementById('form-response').textContent = responseMessage;
-
+  // Create data object to send
   const data = {
     'name': name,
     'date': date,
@@ -35,11 +32,21 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     'radio': radioPoints
   };
 
-  fetch('https://script.google.com/macros/s/AKfycby8kYnewtN4_TTv41uJO2QUMvzZcz-t1GoWFtiVw2RmguF8l3OI4UHb1MMaIWBj4bU1/exec', {
+  // Send form data to Google Apps Script Web App
+  fetch('https://script.google.com/macros/s/AKfycbz7TrN9PBO2c62nAtBMpdPAg25V2b9cqcMc20CiOUtY8wWolrx3iLInSx8-IvHsr0_B/exec', {
     method: 'POST',
     body: new URLSearchParams(data)
   })
   .then(response => response.text())
-  .then(result => console.log('Success:', result))
-  .catch(error => console.error('Error:', error));
+  .then(result => {
+    // Display success message with total points
+    const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
+    document.getElementById('form-response').textContent = responseMessage;
+    console.log('Success:', result);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    // Display persistent failure message
+    document.getElementById('form-response').textContent = "Submission failed. Please try again.";
+  });
 });
