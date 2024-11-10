@@ -48,15 +48,12 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     console.log(result);  // Log the result from the Google Apps Script
     const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
 
-    // Display the thank-you message and trigger the fade-in effect
+    // Display the thank-you message as an alert-style box
     const formResponseElement = document.getElementById('form-response');
     formResponseElement.textContent = responseMessage;
 
-    // Make the response container visible and trigger the fade-in effect
+    // Show the alert-style response container
     formResponseElement.style.display = 'block';  // Make the container visible
-    setTimeout(() => {
-      formResponseElement.style.opacity = 1;  // Fade-in effect
-    }, 10);  // Small delay to trigger opacity change
 
     // Clear each form field explicitly
     document.getElementById('name').value = "";
@@ -69,6 +66,8 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   })
   .catch(error => {
     console.error('Error:', error);
-    document.getElementById('form-response').textContent = "Submission failed. Please try again.";
+    const formResponseElement = document.getElementById('form-response');
+    formResponseElement.textContent = "Submission failed. Please try again.";
+    formResponseElement.style.display = 'block'; // Display error message
   });
 });
