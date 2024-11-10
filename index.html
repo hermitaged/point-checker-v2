@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Points Submission Form</title>
-  <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Submit Your Points</title>
+    <link rel="shortcut icon" href="your-favicon-url">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://necolas.github.io/normalize.css/7.0.0/normalize.css" rel="stylesheet">
 </head>
 <body>
-  <div id="form-container">
+
+    <header>
+        <h1 id="title">Submit Your Points</h1>
+        <article id="description">
+            <p>Submit your points for Main Event, Weekly Mission, Daily Game, and Radio below!</p>
+        </article>
+    </header>
+
     <h2>Submit Your Points</h2>
     <form id="points-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
 
-      <label for="date">Date:</label>
-      <input type="date" id="date" name="date" required>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
 
-      <label for="main-event">Main Event Points:</label>
-      <input type="number" id="main-event" name="mainEvent" min="0">
+        <label for="main-event">Main Event Points:</label>
+        <input type="number" id="main-event" name="mainEvent" min="0">
 
-      <label for="weekly-mission">Weekly Mission Points:</label>
-      <input type="number" id="weekly-mission" name="weeklyMission" min="0">
+        <label for="weekly-mission">Weekly Mission Points:</label>
+        <input type="number" id="weekly-mission" name="weeklyMission" min="0">
 
-      <label for="daily-game">Daily Game Points:</label>
-      <input type="number" id="daily-game" name="dailyGame" min="0">
+        <label for="daily-game">Daily Game Points:</label>
+        <input type="number" id="daily-game" name="dailyGame" min="0">
 
-      <label for="radio">Radio Points:</label>
-      <input type="number" id="radio" name="radio" min="0">
+        <label for="radio">Radio Points:</label>
+        <input type="number" id="radio" name="radio" min="0">
 
-      <button type="submit">Submit</button>
+        <button type="submit">Submit</button>
     </form>
 
-    <div id="form-response"></div>
-  </div>
+    <footer>
+        <a href="https://southcodes.tumblr.com/" target="_blank">SC</a>
+    </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
