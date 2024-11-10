@@ -22,17 +22,8 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
                       (parseInt(dailyGamePoints) || 0) + 
                       (parseInt(radioPoints) || 0);
 
-  // Show thank-you message after submission
-  const thankYouMessage = document.createElement('div');
-  thankYouMessage.classList.add('thank-you-message');
-  thankYouMessage.innerHTML = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
-  document.body.appendChild(thankYouMessage);
-
-  // Fade-out effect for the message after 5 seconds
-  setTimeout(() => {
-    thankYouMessage.style.opacity = 0;
-    setTimeout(() => thankYouMessage.remove(), 500); // Remove after fade-out
-  }, 5000);
+  // Show thank-you alert after submission
+  alert(`Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`);
 
   // Send form data to Google Apps Script Web App
   fetch('https://script.google.com/macros/s/AKfycbx4TZuTtqImHRCMp1r1MfMi-xO-wgIo_AVKREhmw5Bg5D4WLGla7mzQuDtD_238Zean/exec', {
@@ -59,22 +50,11 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     alert("Submission failed. Please try again.");
   });
 
-  // Clear form fields after submission (Reset animation effects)
-  setTimeout(() => {
-    document.getElementById('name').value = "";
-    document.getElementById('date').value = "";
-    document.getElementById('main-event').value = "";
-    document.getElementById('weekly-mission').value = "";
-    document.getElementById('daily-game').value = "";
-    document.getElementById('radio').value = "";
-
-    // Optionally, remove focus from all inputs to reset styles
-    document.getElementById('name').blur();
-    document.getElementById('date').blur();
-    document.getElementById('main-event').blur();
-    document.getElementById('weekly-mission').blur();
-    document.getElementById('daily-game').blur();
-    document.getElementById('radio').blur();
-  }, 500); // Small delay to allow animations to finish before clearing
-
+  // Clear form fields after submission
+  document.getElementById('name').value = "";
+  document.getElementById('date').value = "";
+  document.getElementById('main-event').value = "";
+  document.getElementById('weekly-mission').value = "";
+  document.getElementById('daily-game').value = "";
+  document.getElementById('radio').value = "";
 });
