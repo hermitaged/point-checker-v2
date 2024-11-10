@@ -4,10 +4,10 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   // Form field values
   const name = document.getElementById('name').value;
   const date = document.getElementById('date').value;
-  const mainEventPoints = document.getElementById('main-event').value || 0;
-  const weeklyMissionPoints = document.getElementById('weekly-mission').value || 0;
-  const dailyGamePoints = document.getElementById('daily-game').value || 0;
-  const radioPoints = document.getElementById('radio').value || 0;
+  const chainfallPoints = document.getElementById('chainfall').value || 0;  // Changed from 'main-event'
+  const chronofluxPoints = document.getElementById('chronoflux').value || 0;  // Changed from 'weekly-mission'
+  const nebulightPoints = document.getElementById('nebulight').value || 0;  // Changed from 'daily-game'
+  const voxaraPoints = document.getElementById('voxara').value || 0;  // Changed from 'radio'
 
   // Date validation to ensure it is in 2025
   const selectedDate = new Date(date);
@@ -17,24 +17,24 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   }
 
   // Calculate total points (optional fields can be blank)
-  const totalPoints = (parseInt(mainEventPoints) || 0) + 
-                      (parseInt(weeklyMissionPoints) || 0) + 
-                      (parseInt(dailyGamePoints) || 0) + 
-                      (parseInt(radioPoints) || 0);
+  const totalPoints = (parseInt(chainfallPoints) || 0) + 
+                      (parseInt(chronofluxPoints) || 0) + 
+                      (parseInt(nebulightPoints) || 0) + 
+                      (parseInt(voxaraPoints) || 0);
 
   // Show thank-you alert after submission
   alert(`Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`);
 
   // Send form data to Google Apps Script Web App
-  fetch('https://script.google.com/macros/s/AKfycbx4TZuTtqImHRCMp1r1MfMi-xO-wgIo_AVKREhmw5Bg5D4WLGla7mzQuDtD_238Zean/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbx1kr_OoNSh5YwpXpGgcPD8QQ0HwZ967CtzHQ6F94BUxGQaEcPQrWcBidkwdH42og/exec', {
     method: 'POST',
     body: new URLSearchParams({
       'name': name,
       'date': date,
-      'mainEvent': mainEventPoints,
-      'weeklyMission': weeklyMissionPoints,
-      'dailyGame': dailyGamePoints,
-      'radio': radioPoints,
+      'chainfall': chainfallPoints,  // Changed from 'mainEvent'
+      'chronoflux': chronofluxPoints,  // Changed from 'weeklyMission'
+      'nebulight': nebulightPoints,  // Changed from 'dailyGame'
+      'voxara': voxaraPoints,  // Changed from 'radio'
       'totalPoints': totalPoints
     }),
     headers: {
@@ -53,8 +53,8 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
   // Clear form fields after submission
   document.getElementById('name').value = "";
   document.getElementById('date').value = "";
-  document.getElementById('main-event').value = "";
-  document.getElementById('weekly-mission').value = "";
-  document.getElementById('daily-game').value = "";
-  document.getElementById('radio').value = "";
+  document.getElementById('chainfall').value = "";
+  document.getElementById('chronoflux').value = "";
+  document.getElementById('nebulight').value = "";
+  document.getElementById('voxara').value = "";
 });
