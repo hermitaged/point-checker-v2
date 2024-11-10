@@ -86,3 +86,21 @@ button:hover {
 button:active {
     background-color: #007b8a; /* Even darker on click */
 }
+
+/* New styles for the thank-you message */
+#form-response {
+    display: none; /* Hidden by default */
+    font-size: 1.1rem;
+    color: #007b8a;
+    background-color: #e0f7fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: center;
+    width: 95vw;
+    max-width: 35rem;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
+}
