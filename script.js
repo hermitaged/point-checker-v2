@@ -33,17 +33,21 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     'totalPoints': totalPoints // Include totalPoints in data sent to server
   };
 
+  console.log(data);  // Log the data to verify it's correct
+
   // Send form data to Google Apps Script Web App
   fetch('https://script.google.com/macros/s/AKfycbx4TZuTtqImHRCMp1r1MfMi-xO-wgIo_AVKREhmw5Bg5D4WLGla7mzQuDtD_238Zean/exec', {
     method: 'POST',
-    body: new URLSearchParams(data)
+    body: new URLSearchParams(data),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
   })
   .then(response => response.text())
   .then(result => {
-    // Display success message with total points
+    console.log(result);  // Log the result from the Google Apps Script
     const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
     document.getElementById('form-response').textContent = responseMessage;
-    console.log('Success:', result);
 
     // Clear each form field explicitly
     document.getElementById('name').value = "";
