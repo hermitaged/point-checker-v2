@@ -6,6 +6,10 @@ body {
     color: #333;
     background-color: #f9f9f9; /* Light background for the form */
     padding-top: 2rem; /* Adjust for no header space */
+    display: flex; /* Center everything using flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Full height for the body */
 }
 
 /* Title */
