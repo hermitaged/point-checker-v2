@@ -44,6 +44,10 @@ document.getElementById('points-form').addEventListener('submit', function(e) {
     const responseMessage = `Thank you, ${name}. You have earned a total of ${totalPoints} points on ${date}.`;
     document.getElementById('form-response').textContent = responseMessage;
     console.log('Success:', result);
+
+    // Clear form fields after successful submission
+    document.getElementById('points-form').reset(); // Clears all fields
+
   })
   .catch(error => {
     console.error('Error:', error);
